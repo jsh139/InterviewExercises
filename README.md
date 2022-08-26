@@ -12,9 +12,9 @@ The first pattern (Pattern1) contains a single file called SearchProvider.cs.  T
 
 The second pattern (Pattern2) is just a series of classes describing a search algorithm using various software design patterns.
 
-- The SearchPreparer takes in an implementation of the ISearchAdapterFactory.  The factory is used to return a list of Search Adapter objects (implemented from ISearchAdapter).  It has a method called Prepare that takes in a search request.  There may be many implementations of the ISearchRequest interface.
+- The SearchPreparer has a dependency on in an implementation of the ISearchAdapterFactory.  The factory is used to return a list of SearchAdapter objects (implemented from ISearchAdapter).  It has a method called Prepare that takes in a search request.  There may be many implementations of the ISearchRequest interface.
 - The adapters use a chain of responsibility pattern to check if the search request is of a particular type.  If the type matches, some changes are done to the search request object.
-- There is also a CommonSearchAdapter that makes changes to the request regardless of its type.
+- There is also a CommonSearchAdapter that makes changes to the request object regardless of its type.
 
 The first exercise resides in the Exercises project.  In the Exercise1 folder.  It contains a text description of what we'd like the candidate to do.  We're looking for a few specific things out of this exercise.
 
@@ -27,7 +27,7 @@ The second exercise resides in the ParenTester project.  It contains a simple cl
 
 - The object is to get all of the tests in the Tests.cs file to pass by modifying the ParenTester class (Test-Driven Design).
 - Candidates will likely get the first few tests to pass using if statements, but as the tests get harder and brackets and curley braces are introduced, we'd like them to think outside the box.
-- The ideal solution uses a Stack<T>.
+- The ideal solution uses a Stack<T> rather than a bunch of variables.
 
 ## CleaningProductExercise
 
