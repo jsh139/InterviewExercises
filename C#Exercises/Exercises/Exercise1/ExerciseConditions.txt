@@ -1,0 +1,20 @@
+﻿Create new code and add it to an existing or new class library.
+
+You don't need to create a console app and you don't need to execute your code.
+
+Exercise Conditions:
+
+Develop a class that contains a collection of 'Product' objects.
+
+Provide an 'Add' method so that the Product objects can be added to your class
+(don't worry about how the Product objects are instantiated).
+
+Every Product has a price, a name and a description
+
+Every Product has a type. These are the only possible types:
+	Entertainment
+	Educational
+	Business
+
+Provide a method that returns the Product having the lowest price for a 
+specified type.
