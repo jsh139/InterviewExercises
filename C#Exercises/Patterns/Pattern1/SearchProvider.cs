@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Patterns.Support;
 
 namespace Patterns.Pattern1
@@ -12,12 +13,12 @@ namespace Patterns.Pattern1
             CacheManager = cacheManager;
         }
 
-        protected T GetData<T>(ISearchRequest request, Func<ISearchRequest, ISearchResults, T> getDataFunc)
+        protected async Task<T> GetData<T>(ISearchRequest request, Func<ISearchRequest, ISearchResults, T> getDataFunc)
             where T : class, ISearchResults
         {
             string cacheKey = string.Format("{0}-data", request.CacheKey);
 
-            T data = CacheManager.Get<T>(cacheKey);
+            T data = await CacheManager.GetAsync<T>(cacheKey);
 
             if (data == null)
             {
@@ -28,7 +29,7 @@ namespace Patterns.Pattern1
                     SlidingExpiration = new TimeSpan(0, 15, 0)
                 };
 
-                CacheManager.Put(cacheKey, data, cacheProviderPolicy);
+                await CacheManager.PutAsync(cacheKey, data, cacheProviderPolicy);
             }
 
             return data;
